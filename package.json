@@ -1,0 +1,23 @@
+{
+  "name": "express-homework",
+  "version": "1.0.0",
+  "description": "Now that you've spent some time playing around with Express, we would like you to BYOB (build your own backend)! You will be responsible for creating data in your backend and building a server so you can get and post data. This project shouldn't take more than 3 hours to complete.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abdeboskey/Express-Homework.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Abdeboskey/Express-Homework/issues"
+  },
+  "homepage": "https://github.com/Abdeboskey/Express-Homework#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
