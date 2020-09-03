@@ -1,8 +1,8 @@
-Express Homework
+# Express Homework
 
 Now that you've spent some time playing around with Express, we would like you to BYOB (build your own backend)! You will be responsible for creating data in your backend and building a server so you can get and post data. This project shouldn't take more than 3 hours to complete.
 
-Base Expectations:
+## Base Expectations:
 
 1. Create a Data Source
 
@@ -16,16 +16,16 @@ Using Express, build a server that holds your data in app.locals. This server sh
 
 3. Build 3 endpoints
 
-We would like you to build three endpoints on your server: 
+### We would like you to build three endpoints on your server: 
 
 - Two GET endpoints to retrieve data. One should retrieve all of the data in your data set. The other should take in an id of a specific item in your data set and retrieve that item from your data set.
 
 - One POST endpoint to create new objects in your data set. This endpoint should check every property in the resource being passed in to make sure that all of the properties required to make a new resource were provided. If the user does not provide those required properties, you should send back an error with a message detailing why their request could not be completed.
 
-Submission:
+## Submission:
 
-Comment with your name and a link to your repo on this gist before EOD Friday. 
+Comment with your name and a link to your repo on [this gist](https://gist.github.com/cbdallavalle/83287a763b8c178d4dfd5d9ea03d981c) before EOD Friday. 
 
-Extras:
+### Extras:
 
 If you are wanting some more time to explore and work with Express, you can add two more endpoints! Add a PATCH endpoint that updates a specific part of a resource in your data set. Add a DELETE endpoint so you can destroy a resource in your data set.
