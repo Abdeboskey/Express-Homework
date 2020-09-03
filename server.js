@@ -47,3 +47,15 @@ app.get('/sandals', (request, response) => {
   const sandals = app.locals.sandals
   response.status(200).json({ sandals })
 })
+
+app.get('/sandals/:id', (request, response) => {
+  const { id } = request.params
+  const sandal = app.locals.sandals.find(sandal => sandal.id === +id)
+  if (!sandal) {
+    return response.status(404).json({
+      errorMessage: `A sandal with an id of ${id} could not be found`
+    })
+  }
+  response.status(200).json({ sandal })
+})
+
