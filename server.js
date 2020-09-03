@@ -45,5 +45,5 @@ app.locals.sandals = [
 
 app.get('/sandals', (request, response) => {
   const sandals = app.locals.sandals
-  response.json({ sandals })
+  response.status(200).json({ sandals })
 })
