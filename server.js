@@ -38,7 +38,7 @@ app.locals.sandals = [
   },
   {
     id: 4,
-    name: 'No-name gas station flip flop',
+    name: 'No-name gas station flip-flop',
     weight: '4 oz.',
     price: 2.99,
     hasArchSupport: false,
@@ -68,17 +68,18 @@ app.get('/sandals/:id', (request, response) => {
 })
 
 app.post('/sandals', (request, response) => {
-  const sandal = request.body
-  for (let prop of ['name', 'weight', 'price', 'hasArchSupport', 'imageLink', 'description']) {
-    if (!sandal[prop]) {
+  const requiredProps = ['name', 'weight', 'price', 'hasArchSupport', 'imageLink', 'description']
+  const receivedProps = Object.keys(request.body)
+  for (let prop of requiredProps) {
+    if (!receivedProps.includes(prop)) {
       return response.status(422).json({
         errorMessage: `Cannot POST: missing property ${prop} in request`
       })
     }
   }
   const newSandal = {
-    ...sandal,
-    id: app.locals.sandals.length + 1, // Should this be a random Id like Date.now() instead?
+    ...request.body,
+    id: app.locals.sandals.length + 1, // Should this typically be a 'random' Id like Date.now() instead?
   }
   app.locals.sandals.push(newSandal)
   response.status(201).json(newSandal)
