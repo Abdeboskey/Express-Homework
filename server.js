@@ -1,14 +1,13 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
+
+app.set('port', process.env.port || 3000)
+
 app.use(express.json())
+app.use(cors())
 
-app.set('port', process.env.PORT || 3000)
 app.locals.title = 'Adventure Sandals'
-
-app.listen(app.get('port'), () => {
-  console.log(`${app.locals.title} is running on http://localhost:${app.get('port')}`)
-})
-
 app.locals.sandals = [
   {
     id: 1, 
@@ -36,6 +35,15 @@ app.locals.sandals = [
     hasArchSupport: true,
     imageLink: 'https://www.teva.com/dw/image/v2/AAFF_PRD/on/demandware.static/-/Sites-masterCatalogTeva/default/dw8acd592e/images/grey/1004006-RTML_1.jpg?sw=1020&sh=1020&sm=fit',
     description: 'From a Grand Canyon raft in 1984 to docks, stoops, and sidewalks around the world, one of Teva’s very first sandal stands as a testament to timeless comfort and utilitarian style. Teva pretty much invented the adventure sandal with this revolution in footwear.'
+  },
+  {
+    id: 4,
+    name: 'No-name gas station flip flop',
+    weight: '4 oz.',
+    price: 2.99,
+    hasArchSupport: false,
+    imageLink: 'https://www.inbop.com/wp-content/uploads/2017/07/Bulk-Childrens-Flip-Flops..jpg',
+    description: 'Adventure is subjective.'
   }
 ]
 
@@ -64,19 +72,18 @@ app.post('/sandals', (request, response) => {
   for (let prop of ['name', 'weight', 'price', 'hasArchSupport', 'imageLink', 'description']) {
     if (!sandal[prop]) {
       return response.status(422).json({
-        errorMessage: `Cannot POST: missing property ${prop} on request`
+        errorMessage: `Cannot POST: missing property ${prop} in request`
       })
     }
   }
   const newSandal = {
+    ...sandal,
     id: app.locals.sandals.length + 1, // Should this be a random Id like Date.now() instead?
-    name: sandal.name,
-    weight: sandal.weight,
-    price: sandal.price,
-    hasArchSupport: sandal.hasArchSupport,
-    imageLink: sandal.imageLink,
-    description: sandal.description,
   }
   app.locals.sandals.push(newSandal)
   response.status(201).json(newSandal)
+})
+
+app.listen(app.get('port'), () => {
+  console.log(`${app.locals.title} is now listening on http://localhost:${app.get('port')}!`)
 })
