@@ -1,6 +1,6 @@
 # Express Homework
 
-Now that you've spent some time playing around with Express, we would like you to BYOB (build your own backend)! You will be responsible for creating data in your backend and building a server so you can get and post data. This project shouldn't take more than 3 hours to complete.
+This is a small microserver backend built with Express that's all about ADVENTURE SANDALS.
 
 ## Base Expectations:
 
