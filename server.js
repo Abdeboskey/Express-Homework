@@ -73,14 +73,11 @@ app.post('/sandals', (request, response) => {
   for (let prop of requiredProps) {
     if (!receivedProps.includes(prop)) {
       return response.status(422).json({
-        errorMessage: `Cannot POST: missing property ${prop} in request`
+        errorMessage: `Cannot POST: Missing property '${prop}' in request. Please include a ${typeof prop} with a key of ${prop}`
       })
     }
   }
-  const newSandal = {
-    ...request.body,
-    id: app.locals.sandals.length + 1, // Should this typically be a 'random' Id like Date.now() instead?
-  }
+  const newSandal = { id: app.locals.sandals.length + 1, ...request.body } // Should this typically be a 'random' Id like Date.now() instead?
   app.locals.sandals.push(newSandal)
   response.status(201).json(newSandal)
 })
